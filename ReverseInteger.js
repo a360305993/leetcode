@@ -5,16 +5,15 @@
 var reverse = function(x) {
     var MAXVALUE=2147483647;
 	var MINVALUE=-MAXVALUE-1;
-	var y=0;
+	var y=0,n;
 	while(x!==0){
-		var n=x%10;
+		n=x%10;
 		y=y*10+n;
 		x=parseInt(x/10);
 	}
-	console.log(y)
 	if(y>MAXVALUE || y<MINVALUE){
-			return 0;
-		}
+		return 0;
+	}
 	return y;
 	/*var flag=true;
   	if(x<0){
@@ -31,4 +30,3 @@ var reverse = function(x) {
   	}
   	return x;*/
 };
-console.log(reverse(100))

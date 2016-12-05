@@ -11,7 +11,21 @@
  * @return {ListNode}
  */
 var removeNthFromEnd = function(head, n) {
-    var ans=[];
+    var p1=p2=head;
+    for(var i=0;i<n;i++){//p2先行n步
+        p2=p2.next;
+    }
+    if(!p2){//说明删除的是头结点
+        head=head.next;
+        return head;
+    }
+    while(p2.next){//p1、p2同时前进，如果p2的下一个结点为空，说明p1的下一个结点即为要删除的结点
+        p1=p1.next;
+        p2=p2.next;
+    }
+    p1.next=p1.next.next;
+    return head;
+    /*var ans=[];
   	while(head){
   		ans.push(new ListNode(head.val));
   		head=head.next;
@@ -24,5 +38,5 @@ var removeNthFromEnd = function(head, n) {
   	    ans[i].next=ans[i+1];
   	}
   	
-  	return ans[0];
+  	return ans[0];*/
 };

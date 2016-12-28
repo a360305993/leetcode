@@ -11,19 +11,30 @@
  * @return {ListNode}
  */
 var removeElements = function(head, val) {
-    while(head && head.val===val){
-    	head=head.next;
-    }
-    if(!head){return head;}
-    var p1=head,p2=head.next;
-    while(p2){
-    	if(p2.val===val){
-    		p1.next=p2.next;
-    		p2=p1.next;
-    	}else{
-			p1=p1.next;
-    		p2=p2.next;
-    	}
-    }
-    return head;
+   //  while(head && head.val===val){
+   //  	head=head.next;
+   //  }
+   //  if(!head){return head;}
+   //  var p1=head,p2=head.next;
+   //  while(p2){
+   //  	if(p2.val===val){
+   //  		p1.next=p2.next;
+   //  		p2=p1.next;
+   //  	}else{
+			// p1=p1.next;
+   //  		p2=p2.next;
+   //  	}
+   //  }
+   //  return head;
+   var fakeHead=new ListNode(-1);
+   fakeHead.next=head;
+   p=fakeHead;
+   while(p.next){
+   	if(p.next.val===val){
+   		p.next=p.next.next;
+   	}else{
+   		p=p.next;
+   	}
+   }
+   return fakeHead.next;
 };

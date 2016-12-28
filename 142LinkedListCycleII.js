@@ -8,18 +8,30 @@
 
 /**
  * @param {ListNode} head
- * @return {boolean}
+ * @return {ListNode}
  */
+var detectCycle = function(head) {
+    var pslow=head;
+    var pfast=hasCycle(head);
+    if(!pfast){
+    	return null;
+    }
+    while(pfast!==pslow){
+    	pfast=pfast.next;
+    	pslow=pslow.next;
+    }
+    return pfast;
+};
 var hasCycle = function(head) {
     var pslow=head,pfast=head;
-    while(pslow && pfast){
+    while(pfast && pslow){
     	pslow=pslow.next;
     	if(!pfast.next){
     		return false;
     	}
     	pfast=pfast.next.next;
     	if(pfast===pslow){
-    		return true;
+    		return pfast;
     	}
     }
     return false;
